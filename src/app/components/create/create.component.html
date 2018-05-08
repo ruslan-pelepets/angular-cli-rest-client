@@ -1,0 +1,50 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{ title }}
+  </div>
+  <div class="panel-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Country</label>
+        <input type="text" class="form-control" formControlName="country" #country/>
+      </div>
+      <div *ngIf="angForm.controls['country'].invalid && (angForm.controls['country'].dirty || angForm.controls['country'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['country'].errors.required">
+          Country is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">City</label>
+        <input type="text" class="form-control" formControlName="city" #city/>
+      </div>
+      <div *ngIf="angForm.controls['city'].invalid && (angForm.controls['city'].dirty || angForm.controls['city'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['city'].errors.required">
+          City is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Zip Code</label>
+        <input type="text" class="form-control" formControlName="zipCode" #zipCode/>
+      </div>
+      <div *ngIf="angForm.controls['zipCode'].invalid && (angForm.controls['zipCode'].dirty || angForm.controls['zipCode'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['zipCode'].errors.required">
+          Zip Code is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Street</label>
+        <input type="text" class="form-control" formControlName="street" #street/>
+      </div>
+      <div *ngIf="angForm.controls['street'].invalid && (angForm.controls['street'].dirty || angForm.controls['street'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['street'].errors.required">
+          Street is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="addAddress(country.value, city.value, zipCode.value, street.value)"
+                [disabled]="angForm.pristine || angForm.invalid"
+                class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
